@@ -1,0 +1,69 @@
+/* General container styling */
+.details-container {
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #002A3B;
+  }
+  
+  /* Row styling */
+  .details-row {
+	height: 55px;
+	display: flex;
+	width: 100%;
+	justify-content: space-between; /* Space between columns */
+  }
+  
+  /* Column styling */
+  .details-column {
+	flex: 1; /* Each column takes up equal space */
+	padding: 20px;
+	text-align: center;
+	color: #ffffff;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px; /* Space between icon and text */
+	flex-direction: row;
+  }
+  
+  /* Icon styling */
+  .details-icon {
+	width: 40px; /* Adjust as needed */
+	height: 40px; /* Adjust as needed */
+  }
+  
+  /* Text container */
+  .details-text {
+	display: flex;
+	flex-direction: column;
+	gap: 5px; /* Space between text lines */
+  }
+  
+  /* Text 1 styling */
+  .text-1 {
+	font-family: Inter;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 20px;
+	text-align: left;
+  }
+  
+  /* Text 2 styling */
+  .text-2 {
+	font-family: Inter;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 20px;
+	text-align: left;
+  }
+  
+  /* Separation bar styling */
+  .details-bar {
+	width: 1px;
+	background-color: #ccc;
+	margin: 0 20px; /* Space around the bar */
+  }
+  

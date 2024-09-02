@@ -1,0 +1,171 @@
+/* General container styling */
+* {
+	padding: 0;
+	margin: 0;
+  }
+  
+  .challenge-page {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+  }
+  
+  /* Challenge details section */
+  .challenge-details {
+	color: white;
+	height: 107px;
+	padding: 41px 89px;
+	background: #f8f9fd;
+	opacity: 1;
+	box-sizing: border-box;
+  }
+  
+  .challenge-details h2 {
+	margin-top: 0;
+	font-size: 24px;
+	font-family: Inter;
+	font-weight: 700;
+	line-height: 29.05px;
+	text-align: left;
+	color: #000000;
+  }
+  
+  /* Challenge info section */
+  .challenge-info {
+	width: 453px;
+	padding: 20px;
+	margin-bottom: 20px;
+  }
+  
+  .challenge-info p {
+	margin: 10px 0;
+	font-size: 18px;
+  }
+  
+  .challenge-info label {
+	display: block;
+	margin-top: 10px;
+	font-size: 18px;
+	color: #000; /* Ensure label has no background */
+	padding-left: 10px; /* Consistent left padding */
+  }
+  
+  .challenge-info input[type="text"],
+  .challenge-info input[type="date"] {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-top: 5px;
+  }
+  
+  /* Description section */
+  .description {
+	padding: 20px;
+	width: 817px;
+	margin-bottom: 20px;
+  }
+  
+  .description p {
+	font-size: 18px;
+  }
+  
+  .description-input {
+	width: 100%;
+	height: 252px;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-top: 10px;
+	resize: vertical;
+  }
+  
+  /* Image section */
+  .image {
+	width: 236px; 
+	padding: 20px; 
+	margin-bottom: 20px; 
+	flex-direction: column;
+  }
+  
+  .image img {
+	max-width: 100%;
+	height: auto;
+  }
+  
+  .image button {
+	margin-top: 10px;
+	width: 100%;
+	background-color:#F4F4F4;
+	color: black;
+	border: 1px solid black;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	 
+	gap: 8px; /* Space between icon and text */
+  }
+  
+  .image button:hover {
+	background-color: #002a3a;
+  }
+  
+  /* Level type and button section */
+  .level-type {
+	width: 236px;
+	height: 181px;
+	gap: 0px;
+	border: 1px 0px 0px 0px;
+	opacity: 0px;
+	padding: 20px;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	 
+  }
+  
+  .level-type p {
+	margin-bottom: 20px;
+	font-size: 18px;
+  }
+  
+  .level-type button {
+	width: Fixed (214px)px;
+	height: Fixed (46px)px;
+	background: #44924C;
+	color: white;
+	border: none;
+	padding: 15px;
+	border-radius: 10px ;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	
+  }
+  
+ 
+ 
+
+ 
+
+  
+  .level-type button:hover {
+	background-color: #002a3a;
+  }
+  
+  .level-dropdown {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	background-color: #f4f4f4;
+  }
+  

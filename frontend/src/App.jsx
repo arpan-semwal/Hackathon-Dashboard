@@ -1,9 +1,24 @@
+import {
+  BrowserRouter,
+  
+  Route,
+  Routes,
+} from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ChallengePage from "./pages/ChallengePage/ChallengePage";
  
 
 export default function App() {
   return (
     <div>
-      hello
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/Challenge" element={<ChallengePage/>} />
+         
+       
+      </Routes>
+    </BrowserRouter>
     </div>
   )
 }
