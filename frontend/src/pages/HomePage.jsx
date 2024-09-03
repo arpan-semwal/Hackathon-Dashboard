@@ -3,6 +3,7 @@ import Description from "../components/Description/Description";
  
 import Details from "../components/Details/Details";
 import Navbar from "../components/Navbar/Navbar";
+import Search from "../components/SearchBar/Search";
 
  
 
@@ -13,6 +14,7 @@ export default function HomePage() {
 	  <CreateChallenge/>
 	  <Details/>
 	  <Description/>
+	  <Search/>
 	  
 	</div>
   )
