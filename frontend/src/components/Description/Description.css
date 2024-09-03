@@ -1,0 +1,80 @@
+.description-container {
+	width: 100%;
+	height: 902px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.inner-wrapper {
+	text-align: center;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px; /* Adjust this spacing as needed */
+	font-family: Poppins;
+	font-size: 32px;
+	font-weight: 600;
+	 
+	text-align: center;
+
+}
+
+.highlight {
+	background-color: #44924c;
+	color: transparent; /* Makes the text transparent */
+	background-clip: text;
+	-webkit-background-clip: text; /* Required for some browsers */
+	display: inline-block; /* Ensures the background is only behind the text */
+}
+
+.inner-container {
+	width: 100%; /* Adjusted to fit the container's width */
+	max-width: 1119px; /* Optional: Max width for large screens */
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+	grid-template-rows: repeat(2, auto); /* Two rows, height adjusts based on content */
+	gap: 20px; /* Spacing between all cards */
+	padding: 20px;
+}
+
+.card {
+	background: #f8f9fd; /* Change this to your desired card background */
+	border-radius: 10px; /* Optional: Add rounded corners to the cards */
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start; /* Align content to the start */
+}
+
+.card-info {
+	width: 471px;
+	height: 155px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px; /* Adjust gap between elements as needed */
+}
+
+.details-icon {
+	width: 40px; /* Adjust size as needed */
+	height: 40px;
+	margin-bottom: 15px; /* Spacing between icon and heading */
+}
+
+.heading, .paragraph {
+	font-family: Poppins;
+	font-size: 24px;
+	font-weight: 600;
+	text-align: left;
+}
+
+.heading {
+	margin-bottom: 10px;
+}
+
+.paragraph {
+	font-size: 14px;
+	color: #555;
+}
