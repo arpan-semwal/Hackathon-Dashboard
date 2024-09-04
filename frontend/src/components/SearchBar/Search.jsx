@@ -2,16 +2,16 @@ import { useState } from "react";
 import "./Search.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function Search() {
+// eslint-disable-next-line react/prop-types
+export default function Search({ onFilterChange }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState({
-    option1: false,
-    option2: false,
-    option3: false,
-    option4: false,
-    option5: false,
-    option6: false,
-    option7: false,
+    Active: false,
+    Upcoming: false,
+    Past: false,
+    Easy: false,
+    Medium: false,
+    Hard: false,
   });
 
   const toggleDropdown = () => {
@@ -20,16 +20,18 @@ export default function Search() {
 
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
-    setSelectedOptions({
-      ...selectedOptions,
-      [name]: checked,
+    setSelectedOptions(prevOptions => {
+      const newOptions = { ...prevOptions, [name]: checked };
+      onFilterChange(newOptions); // Notify parent component about the change
+      return newOptions;
     });
   };
 
   const removeFilter = (option) => {
-    setSelectedOptions({
-      ...selectedOptions,
-      [option]: false,
+    setSelectedOptions(prevOptions => {
+      const newOptions = { ...prevOptions, [option]: false };
+      onFilterChange(newOptions); // Notify parent component about the change
+      return newOptions;
     });
   };
 
@@ -69,8 +71,8 @@ export default function Search() {
                       <label>
                         <input
                           type="checkbox"
-                          name="option2"
-                          checked={selectedOptions.option2}
+                          name="Active"
+                          checked={selectedOptions.Active}
                           onChange={handleCheckboxChange}
                         />
                         Active
@@ -80,8 +82,8 @@ export default function Search() {
                       <label>
                         <input
                           type="checkbox"
-                          name="option3"
-                          checked={selectedOptions.option3}
+                          name="Upcoming"
+                          checked={selectedOptions.Upcoming}
                           onChange={handleCheckboxChange}
                         />
                         Upcoming
@@ -91,8 +93,8 @@ export default function Search() {
                       <label>
                         <input
                           type="checkbox"
-                          name="option4"
-                          checked={selectedOptions.option4}
+                          name="Past"
+                          checked={selectedOptions.Past}
                           onChange={handleCheckboxChange}
                         />
                         Past
@@ -107,8 +109,8 @@ export default function Search() {
                       <label>
                         <input
                           type="checkbox"
-                          name="option5"
-                          checked={selectedOptions.option5}
+                          name="Easy"
+                          checked={selectedOptions.Easy}
                           onChange={handleCheckboxChange}
                         />
                         Easy
@@ -118,8 +120,8 @@ export default function Search() {
                       <label>
                         <input
                           type="checkbox"
-                          name="option6"
-                          checked={selectedOptions.option6}
+                          name="Medium"
+                          checked={selectedOptions.Medium}
                           onChange={handleCheckboxChange}
                         />
                         Medium
@@ -129,8 +131,8 @@ export default function Search() {
                       <label>
                         <input
                           type="checkbox"
-                          name="option7"
-                          checked={selectedOptions.option7}
+                          name="Hard"
+                          checked={selectedOptions.Hard}
                           onChange={handleCheckboxChange}
                         />
                         Hard
@@ -144,7 +146,7 @@ export default function Search() {
         )}
       </div>
       <div className="selected-filters-container">
-        {selectedFilters.map((filter) => (
+        {Object.keys(selectedOptions).filter(option => selectedOptions[option]).map((filter) => (
           <div key={filter} className="selected-filter">
             {filter}
             <button

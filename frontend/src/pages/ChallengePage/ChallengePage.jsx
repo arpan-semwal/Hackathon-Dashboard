@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { ChallengeContext } from "../../context/ChallengeContext.jsx";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
@@ -16,6 +16,8 @@ export default function ChallengePage() {
   const { setChallenges } = useContext(ChallengeContext);
   const navigate = useNavigate();
 
+  const fileInputRef = useRef(null);
+
   const handleCreateChallenge = () => {
     const newChallenge = {
       challengeName,
@@ -25,13 +27,27 @@ export default function ChallengePage() {
       description,
       image
     };
-  
+
+    // This correctly updates the challenges array without overriding
     setChallenges(prevChallenges => [...prevChallenges, newChallenge]);
-  
+
     navigate("/");
   };
-  
-  
+
+  const handleUploadClick = () => {
+    fileInputRef.current.click(); // Trigger the file input click
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file); // Convert image to base64 URL
+    }
+  };
 
   return (
     <div className="challenge-page">
@@ -67,7 +83,16 @@ export default function ChallengePage() {
 
       <div className="image">
         <p>Image</p>
-        <button>Upload <img src={uploadIcon} alt="Upload Icon" /></button>
+        <button type="button" onClick={handleUploadClick}>
+          Upload <img src={uploadIcon} alt="Upload Icon" />
+        </button>
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: 'none' }}
+          onChange={handleFileChange}
+        />
+        {image && <img src={image} alt="Challenge" className="uploaded-image" />}
       </div>
 
       <div className="level-type">

@@ -1,31 +1,111 @@
+.post-card {
+	background-color: white;
+	width: 354px;
+	height: auto; /* Allow height to adjust based on content */
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+	position: relative; /* Ensure positioning context for image */
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Center content horizontally */
+	padding-bottom: 16px; /* Space for the button */
+}
+
+.post-image {
+	width: 100%;
+	border-radius: 8px;
+	object-fit: cover;
+	height: 174px;
+}
+
+.post-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Center content horizontally */
+	text-align: center; /* Center text */
+	margin-top: 16px;
+	width: 100%;
+}
+
+.status {
+	font-size: 16px;
+	font-weight: bold;
+	color: #003145; /* Adjust color if needed */
+	margin-bottom: 8px; /* Space below the status */
+}
+
+.challenge-name {
+	font-size: 24px;
+	font-weight: bold;
+	color: #003145; /* Adjust color if needed */
+	margin-bottom: 16px; /* Space below the name */
+}
+
+.countdown-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.countdown {
+	display: flex;
+	align-items: center;
+	gap: 8px; /* Adjust space between items */
+	margin-top: 8px; /* Space above countdown */
+	margin-bottom: 16px; /* Space below countdown */
+}
+
+.countdown-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.countdown-item span {
+	font-size: 24px;
+	font-weight: bold;
+	color: #003145; /* Adjust color if needed */
+}
+
+.countdown-label {
+	font-size: 12px;
+	color: #003145; /* Adjust color if needed */
+}
+
+.participate-button {
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	background: #44924C;
+	border: none;
+	cursor: pointer;
+	width: 182.55px;
+	height: 42px;
+	padding: 12px 21.55px 12px 16px;
+	border-radius: 10px;
+	margin-top: 16px;
+}
+
+.participate-button:hover {
+	background-color: #001d29; /* Darker shade for hover effect */
+}
+
 .challenges-container {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px; /* Adjust the spacing between cards */
 	background: #003145;
+}
 
-  }
-  
-  .post-card {
-	background-color: white;
-	padding: 16px;
-	border-radius: 15px 0px 0px 0px; /* Adjust border-radius */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	width: 354px; /* Fixed width */
-	height: 473px; /* Fixed height */
-	box-sizing: border-box;
-	opacity: 1; /* Set to 1 to ensure visibility */
-  }
-  
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
 	.post-card {
-	  width: calc(50% - 16px); /* Adjust width for smaller screens */
+		width: calc(50% - 16px); /* Adjust for smaller screens */
 	}
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
 	.post-card {
-	  width: 100%; /* Full width on very small screens */
+		width: 100%; /* Full width on very small screens */
 	}
-  }
-  
+}
