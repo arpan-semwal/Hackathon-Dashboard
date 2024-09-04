@@ -1,0 +1,31 @@
+.challenges-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px; /* Adjust the spacing between cards */
+	background: #003145;
+
+  }
+  
+  .post-card {
+	background-color: white;
+	padding: 16px;
+	border-radius: 15px 0px 0px 0px; /* Adjust border-radius */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 354px; /* Fixed width */
+	height: 473px; /* Fixed height */
+	box-sizing: border-box;
+	opacity: 1; /* Set to 1 to ensure visibility */
+  }
+  
+  @media (max-width: 768px) {
+	.post-card {
+	  width: calc(50% - 16px); /* Adjust width for smaller screens */
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.post-card {
+	  width: 100%; /* Full width on very small screens */
+	}
+  }
+  
