@@ -1,6 +1,6 @@
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { ChallengeContext } from "../../context/ChallengeContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import "./ChallengePage.css";
 import uploadIcon from "../../assets/assets/icons/bxs_cloud-upload.svg";
@@ -15,10 +15,23 @@ export default function ChallengePage() {
 
   const { setChallenges } = useContext(ChallengeContext);
   const navigate = useNavigate();
-
+  const location = useLocation();
   const fileInputRef = useRef(null);
 
-  const handleCreateChallenge = () => {
+  useEffect(() => {
+    // Check if challenge data is passed for editing
+    if (location.state && location.state.challenge) {
+      const { challenge } = location.state;
+      setChallengeName(challenge.challengeName);
+      setStartDate(challenge.startDate);
+      setEndDate(challenge.endDate);
+      setLevel(challenge.level);
+      setDescription(challenge.description);
+      setImage(challenge.image);
+    }
+  }, [location.state]);
+
+  const handleCreateOrUpdateChallenge = () => {
     const newChallenge = {
       challengeName,
       startDate,
@@ -28,8 +41,18 @@ export default function ChallengePage() {
       image
     };
 
-    // This correctly updates the challenges array without overriding
-    setChallenges(prevChallenges => [...prevChallenges, newChallenge]);
+    // If challenge exists in the context, update it; otherwise, add a new one
+    setChallenges(prevChallenges => {
+      if (location.state && location.state.challenge) {
+        // Update existing challenge
+        return prevChallenges.map(challenge =>
+          challenge.challengeName === location.state.challenge.challengeName ? newChallenge : challenge
+        );
+      } else {
+        // Add new challenge
+        return [...prevChallenges, newChallenge];
+      }
+    });
 
     navigate("/");
   };
@@ -54,7 +77,7 @@ export default function ChallengePage() {
       <Navbar className="navbar" />
 
       <div className="challenge-details">
-        <h2>Challenge Details</h2>
+        <h2>{location.state && location.state.challenge ? "Edit Challenge" : "Create Challenge"}</h2>
       </div>
 
       <div className="challenge-info">
@@ -106,7 +129,9 @@ export default function ChallengePage() {
           <option value="Medium">Medium</option>
           <option value="Hard">Hard</option>
         </select>
-        <button onClick={handleCreateChallenge}>Create Challenge</button>
+        <button onClick={handleCreateOrUpdateChallenge}>
+          {location.state && location.state.challenge ? "Update Challenge" : "Create Challenge"}
+        </button>
       </div>
     </div>
   );

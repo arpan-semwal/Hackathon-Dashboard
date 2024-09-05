@@ -40,10 +40,11 @@ export default function Post({ challenge }) {
     updateCountdown();
     const intervalId = setInterval(updateCountdown, 60000); // Update every minute
     return () => clearInterval(intervalId);
+  // eslint-disable-next-line react/prop-types
   }, [challenge.startDate, challenge.endDate]);
 
   const handleParticipateClick = () => {
-    navigate('/list'); // Navigate to ListPage when button is clicked
+    navigate('/list', { state: { challenge } }); // Pass challenge data to ListPage
   };
 
   return (
