@@ -35,10 +35,6 @@ export default function Search({ onFilterChange }) {
     });
   };
 
-  const closeDropdown = () => {
-    setIsDropdownOpen(false);
-  };
-
   const selectedFilters = Object.keys(selectedOptions).filter(
     (option) => selectedOptions[option]
   );
@@ -59,94 +55,89 @@ export default function Search({ onFilterChange }) {
           <>
             <div
               className={`overlay ${isDropdownOpen ? "active" : ""}`}
-              onClick={closeDropdown}
+              onClick={() => setIsDropdownOpen(false)}
             ></div>
             <div className={`dropdown-menu ${isDropdownOpen ? "open" : ""}`}>
               <div className="dropdown-section">
-                <h3>Filter</h3>
-                <div className="dropdown-subsection">
-                  <h4>Status</h4>
-                  <ul>
-                    <li>
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="Active"
-                          checked={selectedOptions.Active}
-                          onChange={handleCheckboxChange}
-                        />
-                        Active
-                      </label>
-                    </li>
-                    <li>
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="Upcoming"
-                          checked={selectedOptions.Upcoming}
-                          onChange={handleCheckboxChange}
-                        />
-                        Upcoming
-                      </label>
-                    </li>
-                    <li>
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="Past"
-                          checked={selectedOptions.Past}
-                          onChange={handleCheckboxChange}
-                        />
-                        Past
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-                <div className="dropdown-subsection">
-                  <h4>Level</h4>
-                  <ul>
-                    <li>
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="Easy"
-                          checked={selectedOptions.Easy}
-                          onChange={handleCheckboxChange}
-                        />
-                        Easy
-                      </label>
-                    </li>
-                    <li>
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="Medium"
-                          checked={selectedOptions.Medium}
-                          onChange={handleCheckboxChange}
-                        />
-                        Medium
-                      </label>
-                    </li>
-                    <li>
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="Hard"
-                          checked={selectedOptions.Hard}
-                          onChange={handleCheckboxChange}
-                        />
-                        Hard
-                      </label>
-                    </li>
-                  </ul>
-                </div>
+                <h3>Status</h3>
+                <ul>
+                  <li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Active"
+                        checked={selectedOptions.Active}
+                        onChange={handleCheckboxChange}
+                      />
+                      Active
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Upcoming"
+                        checked={selectedOptions.Upcoming}
+                        onChange={handleCheckboxChange}
+                      />
+                      Upcoming
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Past"
+                        checked={selectedOptions.Past}
+                        onChange={handleCheckboxChange}
+                      />
+                      Past
+                    </label>
+                  </li>
+                </ul>
+                <h3>Difficulty</h3>
+                <ul>
+                  <li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Easy"
+                        checked={selectedOptions.Easy}
+                        onChange={handleCheckboxChange}
+                      />
+                      Easy
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Medium"
+                        checked={selectedOptions.Medium}
+                        onChange={handleCheckboxChange}
+                      />
+                      Medium
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="Hard"
+                        checked={selectedOptions.Hard}
+                        onChange={handleCheckboxChange}
+                      />
+                      Hard
+                    </label>
+                  </li>
+                </ul>
               </div>
             </div>
           </>
         )}
       </div>
       <div className="selected-filters-container">
-        {Object.keys(selectedOptions).filter(option => selectedOptions[option]).map((filter) => (
+        {selectedFilters.map((filter) => (
           <div key={filter} className="selected-filter">
             {filter}
             <button

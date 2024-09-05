@@ -16,7 +16,7 @@ export default function Post({ challenge }) {
       const endDate = new Date(challenge.endDate);
       let statusText = '';
       let days = 0, hours = 0, minutes = 0;
-
+  
       if (currentTime < startDate) {
         statusText = 'Upcoming';
         const diff = startDate - currentTime;
@@ -32,15 +32,14 @@ export default function Post({ challenge }) {
       } else {
         statusText = 'Past';
       }
-
+  
       setStatus(statusText);
       setCountdown({ days, hours, minutes });
     };
-
+  
     updateCountdown();
     const intervalId = setInterval(updateCountdown, 60000); // Update every minute
     return () => clearInterval(intervalId);
-  // eslint-disable-next-line react/prop-types
   }, [challenge.startDate, challenge.endDate]);
 
   const handleParticipateClick = () => {
@@ -83,6 +82,7 @@ export default function Post({ challenge }) {
           )}
         </div>
         <button className="participate-button" onClick={handleParticipateClick}>Participate Now</button>
+        <span className="">{challenge.level}</span>
       </div>
     </div>
   );
