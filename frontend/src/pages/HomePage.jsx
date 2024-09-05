@@ -10,6 +10,7 @@ import Post from "../components/Post/Post";
 export default function HomePage() {
   const { challenges } = useContext(ChallengeContext);
   const [filters, setFilters] = useState({});
+  const [searchTerm, setSearchTerm] = useState('');
   const [challengesWithStatus, setChallengesWithStatus] = useState([]);
 
   useEffect(() => {
@@ -41,22 +42,33 @@ export default function HomePage() {
     setFilters(newFilters);
   };
 
+  const handleSearchTermChange = (term) => {
+    setSearchTerm(term.toLowerCase());
+  };
+
   const applyFilters = (challenge) => {
     const { Active, Upcoming, Past, Easy, Medium, Hard } = filters;
-    
+
+    // Filter by search term
+    const matchesSearchTerm = challenge.challengeName
+      .toLowerCase()
+      .includes(searchTerm);
+
     // Determine if challenge status matches selected filters
-    const statusMatch = (Active && challenge.status === 'Active') ||
-                        (Upcoming && challenge.status === 'Upcoming') ||
-                        (Past && challenge.status === 'Past') ||
-                        (!Active && !Upcoming && !Past); // No status filters selected
+    const statusMatch =
+      (Active && challenge.status === "Active") ||
+      (Upcoming && challenge.status === "Upcoming") ||
+      (Past && challenge.status === "Past") ||
+      (!Active && !Upcoming && !Past); // No status filters selected
 
     // Determine if challenge difficulty matches selected filters
-    const difficultyMatch = (Easy && challenge.level === 'Easy') ||
-                            (Medium && challenge.level === 'Medium') ||
-                            (Hard && challenge.level === 'Hard') ||
-                            (!Easy && !Medium && !Hard); // No difficulty filters selected
+    const difficultyMatch =
+      (Easy && challenge.level === "Easy") ||
+      (Medium && challenge.level === "Medium") ||
+      (Hard && challenge.level === "Hard") ||
+      (!Easy && !Medium && !Hard); // No difficulty filters selected
 
-    return statusMatch && difficultyMatch;
+    return matchesSearchTerm && statusMatch && difficultyMatch;
   };
 
   const filteredChallenges = challengesWithStatus.filter(applyFilters);
@@ -67,11 +79,18 @@ export default function HomePage() {
       <CreateChallenge />
       <Details />
       <Description />
-      <Search onFilterChange={handleFilterChange} />
+      <Search
+        onFilterChange={handleFilterChange}
+        onSearchTermChange={handleSearchTermChange}
+      />
       <div className="challenges-container">
-        {filteredChallenges.map((challenge, index) => (
-          <Post key={index} challenge={challenge} />
-        ))}
+        {filteredChallenges.length > 0 ? (
+          filteredChallenges.map((challenge, index) => (
+            <Post key={index} challenge={challenge} />
+          ))
+        ) : (
+          <p>No challenges found</p>
+        )}
       </div>
     </div>
   );

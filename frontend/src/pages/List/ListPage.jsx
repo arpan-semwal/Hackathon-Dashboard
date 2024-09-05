@@ -12,9 +12,9 @@ export default function ListPage() {
   return (
     <div>
       <Navbar />
-      <ListDetail challenge={challenge} /> {/* Pass challenge data */}
-      <EditAndDetail challenge={challenge} /> {/* Pass challenge data */}
-      <OverView challenge={challenge} /> {/* Pass challenge data */}
+      <ListDetail challenge={challenge} />  
+      <EditAndDetail challenge={challenge} />  
+      <OverView challenge={challenge} /> 
     </div>
   );
 }

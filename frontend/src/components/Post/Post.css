@@ -1,15 +1,15 @@
 .post-card {
 	background-color: white;
 	width: 354px;
-	height: auto; /* Allow height to adjust based on content */
+	height: auto;
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	box-sizing: border-box;
-	position: relative; /* Ensure positioning context for image */
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	align-items: center; /* Center content horizontally */
-	padding-bottom: 16px; /* Space for the button */
+	align-items: center;
+	padding-bottom: 16px;
 }
 
 .post-image {
@@ -22,38 +22,47 @@
 .post-content {
 	display: flex;
 	flex-direction: column;
-	align-items: center; /* Center content horizontally */
-	text-align: center; /* Center text */
-	margin-top: 16px;
+	align-items: center;
 	width: 100%;
+	text-align: center;
 }
 
 .status {
 	font-size: 16px;
 	font-weight: bold;
-	color: #003145; /* Adjust color if needed */
-	margin-bottom: 8px; /* Space below the status */
+	color: #003145;
+	margin-bottom: 8px;
 }
 
 .challenge-name {
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: bold;
-	color: #003145; /* Adjust color if needed */
-	margin-bottom: 16px; /* Space below the name */
+	color: #003145;
+	margin-bottom: 16px;
+	display: block;
+	max-width: 90%; /* Limit width to ensure it's readable */
+	white-space: normal; /* Allow wrapping */
+	word-wrap: break-word; /* Break long words if necessary */
+	line-height: 1.2; /* Adjust line height for better readability */
+	height: 3.6em; /* Max height for two or three lines */
+	overflow: hidden; /* Hide overflowing text */
+	text-overflow: ellipsis; /* Add ellipsis for long names */
 }
 
 .countdown-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 100%;
+	margin-top: 8px;
+	margin-bottom: 16px;
 }
 
 .countdown {
 	display: flex;
+	flex-direction: row;
 	align-items: center;
-	gap: 8px; /* Adjust space between items */
-	margin-top: 8px; /* Space above countdown */
-	margin-bottom: 16px; /* Space below countdown */
+	gap: 8px;
 }
 
 .countdown-item {
@@ -65,12 +74,12 @@
 .countdown-item span {
 	font-size: 24px;
 	font-weight: bold;
-	color: #003145; /* Adjust color if needed */
+	color: #003145;
 }
 
 .countdown-label {
 	font-size: 12px;
-	color: #003145; /* Adjust color if needed */
+	color: #003145;
 }
 
 .participate-button {
@@ -88,24 +97,24 @@
 }
 
 .participate-button:hover {
-	background-color: #001d29; /* Darker shade for hover effect */
+	background-color: #001d29;
 }
 
 .challenges-container {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px; /* Adjust the spacing between cards */
+	gap: 16px;
 	background: #003145;
 }
 
 @media (max-width: 768px) {
 	.post-card {
-		width: calc(50% - 16px); /* Adjust for smaller screens */
+		width: calc(50% - 16px);
 	}
 }
 
 @media (max-width: 480px) {
 	.post-card {
-		width: 100%; /* Full width on very small screens */
+		width: 100%;
 	}
 }

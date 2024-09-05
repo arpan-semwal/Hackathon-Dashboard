@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import "./Search.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-// eslint-disable-next-line react/prop-types
-export default function Search({ onFilterChange }) {
+export default function Search({ onFilterChange, onSearchTermChange }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState({
     Active: false,
@@ -13,6 +13,7 @@ export default function Search({ onFilterChange }) {
     Medium: false,
     Hard: false,
   });
+  const [searchTerm, setSearchTerm] = useState('');
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -25,6 +26,12 @@ export default function Search({ onFilterChange }) {
       onFilterChange(newOptions); // Notify parent component about the change
       return newOptions;
     });
+  };
+
+  const handleSearchChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    onSearchTermChange(term); // Pass search term to parent component
   };
 
   const removeFilter = (option) => {
@@ -47,6 +54,8 @@ export default function Search({ onFilterChange }) {
           type="text"
           className="search-input"
           placeholder="Search challenges..."
+          value={searchTerm}
+          onChange={handleSearchChange} // Filter as the user types
         />
         <button className="filter-button" onClick={toggleDropdown}>
           Filter <i className="fas fa-chevron-down"></i>

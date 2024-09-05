@@ -1,27 +1,88 @@
 .list-detail-container {
-	padding: 20px;
-	background: #003145;
-	width: 100%;
-	height: 419px;
-	color: white;
- 
- 
-  }
-  
-  .challenge-name {
-	font-size: 28px;
-	font-weight: bold;
-	margin-bottom: 10px;
-	color: wheat;
-  }
-  
-  .challenge-description {
-	font-size: 18px;
-	margin-bottom: 10px;
-  }
-  
-  p {
-	font-size: 16px;
-	margin-bottom: 5px;
-  }
-  
+    height: 419px;
+    background: #003145;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Add spacing between elements */
+}
+
+.list-detail {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 20px;
+}
+
+/* Styling for the "Starts on" section */
+.start-date-badge {
+    background-color: #F0A500; /* Similar to the yellow color in the image */
+    height: 14px;
+    width: 464px; /* Adjust width to fit content */
+    max-width: 100%; /* Ensure it does not exceed container width */
+    color: #003145; /* Correct color */
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Challenge Name Styling */
+.challenge-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: white; /* Ensure the text color is white */
+    line-height: 1.2;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* Challenge Description Styling */
+.challenge-description {
+    font-size: 18px;
+    color: lightgray;
+    padding-left: 5px;
+    border-left: 2px solid green; /* Add a green left border for styling */
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: white; /* Ensure the paragraph text color is white */
+}
+
+/* Difficulty Icon Styling */
+.difficulty-icon {
+    width: 24px; /* Adjust size as needed */
+    height: 24px; /* Adjust size as needed */
+    margin-right: 8px; /* Add spacing between icon and text */
+}
+
+.difficult-icon p {
+    color: black; /* Ensure text color is black */
+}
+
+
+/* Difficulty Icon Container Styling */
+.difficult-icon {
+    width: 102px;
+    height: 34px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background: #F8F9FD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
+    color: black; /* Ensure the text color is black */
+}
+
+/* Difficulty Icon Styling */
+.difficult {
+    width: 24px;
+    height: 24px;
+    object-fit: cover; /* Ensures the image fits well within its container */
+}

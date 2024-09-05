@@ -82,7 +82,7 @@ export default function Post({ challenge }) {
           )}
         </div>
         <button className="participate-button" onClick={handleParticipateClick}>Participate Now</button>
-        <span className="">{challenge.level}</span>
+       
       </div>
     </div>
   );
