@@ -2,19 +2,18 @@
 import "./ListDetail.css";
 
 export default function ListDetail({ challenge }) {
+  if (!challenge) {
+    return <div>No challenge data available.</div>; // Handle case when no challenge data is passed
+  }
+
   return (
-    <div className="list-container">
-      {challenge ? (
-        <div className="challenge-details">
-          <h2 className="challenge-name">{challenge.challengeName}</h2>
-          <div className="start-date-box">
-            Start Date: {new Date(challenge.startDate).toLocaleDateString()}
-          </div>
-          <p className="challenge-end-date">End Date: {new Date(challenge.endDate).toLocaleDateString()}</p>
-        </div>
-      ) : (
-        <p className="no-details">No challenge details available.</p>
-      )}
+    <div className="list-detail-container">
+         <p><strong>Start Date:</strong> {challenge.startDate}</p>
+      <h1 className="challenge-name">{challenge.challengeName}</h1>
+      <p className="challenge-description">{challenge.description}</p>
+   
+     
+      <p><strong>Status:</strong> {challenge.level}</p>
     </div>
   );
 }
